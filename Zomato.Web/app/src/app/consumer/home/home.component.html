@@ -1,0 +1,178 @@
+    <mat-sidenav-container class="example-container" [hasBackdrop]="true">
+      <mat-sidenav #sidenav [mode]="over" position="end" disableClose [fixedInViewport]="true" style="width:500px;">
+        <div class="close-tag">
+          <i class="fa fa-times fa-lg" (click)="sidenav.toggle()"></i>
+        </div>
+        <!-- Login Form -->
+        <div class="account-class" *ngIf="!registerToken">
+          <h2>Login</h2>
+          <h5>or <a href="" (click)="reg()" onclick="return false;">Create an account</a></h5>
+          <form #form="ngForm" autocomplete="off" (submit)="loginUser()">
+            <div class="row" style="margin-top:20px;">
+              <mat-form-field appearance="outline" class="mat-form-field-width">
+                <mat-label>Email</mat-label>
+                <input matInput email name="UserEmailAddress" [(ngModel)]="login.UserEmailAddress" #UserEmailAddress="ngModel" [ngClass]="{'is-invalid': (UserEmailAddress.touched || UserEmailAddress.dirty) && !UserEmailAddress.valid }" required>
+                <mat-error *ngIf="UserEmailAddress.errors?.required">"Email Id is required"</mat-error>
+                <mat-error *ngIf="UserEmailAddress.errors?.email">"Valid Email Id is required"</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field appearance="outline" class="mat-form-field-width">
+                <mat-label>Password</mat-label>
+                <input matInput type="password"  name="UserPassword" [(ngModel)]="login.UserPassword" #UserPassword="ngModel" [ngClass]="{'is-invalid': (UserPassword.touched || UserPassword.dirty) && !UserPassword.valid }" required minlength="8">
+                <mat-error *ngIf="UserPassword.errors?.required">"Password is required"</mat-error>
+                <mat-error *ngIf="UserPassword.errors?.minlength">"Password should be of minimum length 8"</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-raised-button [disabled]="form.invalid" (click)="sidenav.toggle()">Login</button>
+            </div>
+          </form>
+        </div>
+        <!--Register Form-->
+        <div class="account-class" *ngIf="registerToken">
+          <h2>Register</h2>
+          <h5>or <a (click)="log()" onclick="return false;">Already have an account</a></h5>
+          <form #form="ngForm" autocomplete="off" (submit)="registerUser()">
+            <div class="row" style="margin-top:20px;">
+              <mat-form-field appearance="outline" class="mat-form-field-width">
+                <mat-label>Name</mat-label>
+                <input matInput required name="UserName" [(ngModel)]="register.UserName" #UserName="ngModel" [ngClass]="{'is-invalid': (UserName.touched || UserName.dirty) && !UserName.valid }">
+                <mat-error *ngIf="UserName.errors?.required">"Name is required"</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field appearance="outline" class="mat-form-field-width">
+                <mat-label>Mobile Number</mat-label>
+                <input matInput number name="UserMobileNumber" [(ngModel)]="register.UserMobileNumber" #UserPhoneNumber="ngModel" [ngClass]="{'is-invalid': (UserPhoneNumber.touched || UserPhoneNumber.dirty) && !UserPhoneNumber.valid }" required minlength="10" maxlength="10">
+                <mat-error *ngIf="UserPhoneNumber.errors?.required">"Mobile Number is required"</mat-error>
+                <mat-error *ngIf="UserPhoneNumber.errors?.minlength">"Provide phone number of 10 digit"</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row login-form">
+              <mat-form-field appearance="outline" class="mat-form-field-width">
+                <mat-label>Email</mat-label>
+                <input matInput email name="UserEmailAddress" [(ngModel)]="register.UserEmailAddress" #Email="ngModel" [ngClass]="{'is-invalid': (Email.touched || Email.dirty) && !Email.valid }" required>
+                <mat-error *ngIf="Email.errors?.required">"Email is required"</mat-error>
+                <mat-error *ngIf="Email.errors?.email">"Provide valid Email"</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row login-form">
+              <mat-form-field appearance="outline" class="mat-form-field-width">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="UserPassword" [(ngModel)]="register.UserPassword" #Password="ngModel" [ngClass]="{'is-invalid': (Password.touched || Password.dirty) && !Password.valid }" required minlength="8">
+                <mat-error *ngIf="Password.errors?.required">"Password is required"</mat-error>
+                <mat-error *ngIf="Password.errors?.minlength">"Password of min length 8 is required"</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-raised-button [disabled]="form.invalid">Register</button>
+            </div>
+          </form>
+        </div>
+      </mat-sidenav>
+
+      <mat-sidenav-content style="height: 100%;">
+        <section>
+          <div class="banner">
+            <div class="topnav" *ngIf="!userToken">
+              <button mat-raised-button (click)="sidenav.toggle()">Login</button>
+            </div>
+            <div class="topnav" *ngIf="userToken">
+              <a (click)="navigateUserProfile()">Hi, {{userName}}</a>
+              <button mat-raised-button (click)="logoutUser()">Log Out</button>
+            </div>
+            <div class="container">
+              <div class="middle-content">
+                <img src="../../../assets/logo.png" alt="Zomato Logo" />
+                <h2>Find the best restaurants, cafes and many more</h2>
+              </div>
+              <div class="banner-form">
+                <!--<form #form="ngForm" autocomplete="off" (submit)="search()">
+                  <div class="form-group zomato-form">
+                    <input mat-input class="form-control fa" type="text" placeholder="&#xf002; Search for restaurants, cafes and many more"
+                           (ngModelChange)="doFilter()" [matAutocomplete]="auto"
+                           name="searchText" [(ngModel)]="searchText" #SearchText="ngModel" [ngClass]="{'is-invalid': (SearchText.touched || SearchText.dirty) && !SearchText.valid }" />
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let each of restaurant | async" [value]="each.restaurant.restaurantName">
+                        {{each.restaurant.restaurantName}}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <button mat-raised-button [disabled]="form.invalid" class="search-btn">Search</button>
+                  </div>
+                </form>-->
+                <form>
+                  <div class="zomato-form">
+                    <input mat-input class="fa" type="text" placeholder="&#xf002; Search for restaurants, cafes and many more" [matAutocomplete]="auto" [formControl]="restaurantCtrl">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let each of filteredRestaurants | async" [value]="each.restaurant.restaurantName">
+                        <span>{{ each.restaurant.restaurantName }}</span>
+                      </mat-option>
+                    </mat-autocomplete>
+                    <button mat-raised-button class="search-btn" (click)="search()">Search</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="wrapper mtop ptop">
+            <h2>Quick Searches</h2>
+            <p>Discover Restaurant by type of meal</p>
+            <mat-card class="mat-elevation-z4">
+              <div class="container">
+                <a [routerLink]="['category/breakfast']">
+                  <img src="../../../assets/breakfast.png" class="image-quick-search" alt="Breakfast" />
+                  <span>Breakfast</span>
+                </a>
+                <a [routerLink]="['category/lunch']">
+                  <img src="../../../assets/lunch.png" class="image-quick-search" alt="Lunch" />
+                  <span>Lunch</span>
+                </a>
+                <a [routerLink]="['category/dinner']">
+                  <img src="../../../assets/dinner.png" class="image-quick-search" alt="Dinner" />
+                  <span>Dinner</span>
+                </a>
+                <a [routerLink]="['category/cafe']">
+                  <img src="../../../assets/cafes.png" class="image-quick-search" alt="Cafe" />
+                  <span>Cafes</span>
+                </a>
+                <a [routerLink]="['category/dessert']">
+                  <img src="../../../assets/dessert.png" class="image-quick-search" alt="Desserts" />
+                  <span>Desserts</span>
+                </a>
+              </div>
+            </mat-card>
+          </div>
+        </section>
+        <section>
+          <div class="wrapper mtop ptop">
+            <div class="container">
+              <h2 class="card-container-left">List all Restaurants</h2>
+              <a class="card-container-right a-decoration" [routerLink]="['restaurant']">See all</a>
+            </div>
+            <mat-grid-list cols="3" rowHeight="4:2">
+              <mat-grid-tile *ngFor="let each of restaurantList">
+                <mat-card class="mat-elevation-z1" style="width:350px; border-radius:1px;">
+                  <div class="container">
+                    <mat-card-header>
+                      <mat-card-title><h4>{{each.restaurant.restaurantName}}</h4></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{each.cuisines}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <span class="mat-card-rating">
+                        <i class="fa fa-star" aria-hidden="true"></i> {{each.ratingAvg | number : '1.1-1'}}
+                      </span>
+                      <button mat-raised-button class="mat-card-button" (click)="restDetail(each.restaurant.restaurantName)">Order Now</button>
+                    </mat-card-actions>
+                  </div>
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+        </section>
+      </mat-sidenav-content>
+    </mat-sidenav-container>

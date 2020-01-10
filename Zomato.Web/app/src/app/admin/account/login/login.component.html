@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <form #form='ngForm' autocomplete="off" (submit)="submit()">
+      <div class="row" style="margin-left:20px">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Id</mat-label>
+          <input matInput email name="UserEmailAddress" [(ngModel)]="login.UserEmailAddress" #UserEmailAddress="ngModel" [ngClass]="{'is-invalid': (UserEmailAddress.touched || UserEmailAddress.dirty) && !UserEmailAddress.valid }" required>
+          <mat-error *ngIf="UserEmailAddress.errors?.required">"Email Id is required"</mat-error>
+          <mat-error *ngIf="UserEmailAddress.errors?.email">"Valid Email Id is required"</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row" style="margin-left:20px;margin-top:10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="UserPassword" [(ngModel)]="login.UserPassword" #UserPassword="ngModel" [ngClass]="{'is-invalid': (UserPassword.touched || UserPassword.dirty) && !UserPassword.valid }" required minlength="8">
+          <mat-error *ngIf="UserPassword.errors?.required">"Password is required"</mat-error>
+          <mat-error *ngIf="UserPassword.errors?.minlength">"Password should be of minimum length 8"</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row" style="margin-left:20px;margin-top:10px">
+        <button mat-raised-button class="btn btn-primary" [disabled]="form.invalid">Login</button>
+        <a style="margin-left:20px" value="submit" [routerLink]="['register']">Don't have account?</a>
+      </div>
+    </form>
+  </div>
+</div>

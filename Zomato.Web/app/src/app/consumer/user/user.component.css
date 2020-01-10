@@ -1,0 +1,11 @@
+.navbar-brand img { width: 50px; height: 50px; margin-left: 30px; }
+
+.navbar div a:hover{text-decoration:underline; cursor:pointer;}
+
+.user-card { width: 700px; text-align: left; margin: auto; margin-top: 20px; height: 180px; justify-content: center; }
+
+.list-card { width: 20%; margin-left: 30px; margin-bottom: 10px; display: inline-block; height: auto;}
+
+.router-class { width: 75%; margin-right: 30px; float: right; height: auto; display: inline-block; }
+
+.wizard .active { background: #efefef; }

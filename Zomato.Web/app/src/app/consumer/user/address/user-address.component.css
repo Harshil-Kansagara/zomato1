@@ -1,0 +1,11 @@
+h4 { font-size: 20px; margin-left: 10px; float: left }
+
+a { float: right; margin-right: 30px; }
+
+mat-card { width: 300px; border-radius: 1px; }
+
+mat-card-footer { margin-bottom: 5px; }
+
+/*button {color:deepskyblue; background-color:white;}
+
+button:hover {background-color:deepskyblue; color:white;}*/

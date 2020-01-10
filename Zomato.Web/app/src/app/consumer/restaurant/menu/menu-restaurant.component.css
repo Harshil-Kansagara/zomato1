@@ -1,0 +1,27 @@
+.menu-card { width: 60%; margin-top: 10px; margin-left: 30px; margin-bottom: 10px; display: inline-block; height: auto; }
+
+.container {overflow:hidden}
+
+.card-container-right { float: right;}
+
+.card-container-right button { background-color: white; color: deepskyblue; text-align: center; font-weight: 200; font-size:16px; }
+
+.card-container-right button:hover { background-color: deepskyblue; color: white; text-align: center; font-weight: 200; font-size: 16px; }
+
+.card-container-left { display:inline; float:left;}
+
+.card-container-left h6 {font-size:18px; font-weight:200;}
+
+.cuisine-style { background-color:lightgrey; padding:0; }
+
+.order-card { width: 35%; margin-top: 10px; margin-right: 30px; margin-bottom: 10px; float: right; height: auto; display: inline-block; }
+
+.order-card mat-card-title { font-size: 20px; }
+
+.order-card mat-card-content { font-size: 16px; }
+
+.order-card mat-card-footer {margin-bottom: 5px;}
+
+.order-card mat-card-footer button { font-size: 16px; text-align: center; margin-left:10px; margin-right:10px;}
+
+.disableDiv { pointer-events: none; }

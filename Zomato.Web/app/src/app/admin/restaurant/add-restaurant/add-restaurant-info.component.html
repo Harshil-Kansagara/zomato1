@@ -1,0 +1,55 @@
+<div class="card-body">
+  <form #restaurantForm="ngForm" autocomplete="off" novalidate>
+    <fieldset>
+      <legend>
+        Basic Restaurant Information
+      </legend>
+      <div class="row">
+        <div class="col-md-2">
+          <label>
+            <font size="4">Name</font>
+          </label>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="standard">
+            <input matInput placeholder="Restaurant Name" name="Name" [(ngModel)]="restaurant.RestaurantName" #Name="ngModel" [ngClass]="{'is-invalid': (Name.touched || Name.dirty) && !Name.valid }" required>
+            <mat-error *ngIf="Name.errors?.required">Name is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label>
+            <font size="4">Location</font>
+          </label>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="standard">
+              <input matInput placeholder="Restaurant Location" name="Location" type="text" [(ngModel)]="newLocation">
+              <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary" mat-raised-button
+                    type="button"
+                    (click)="addLocations()">
+              Add
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <span *ngFor="let location of restaurant.Location; let i = index">
+              <button class="btn btn-outline-secondary"
+                      style="font-size:smaller;margin-bottom:12px;margin-right:2px"
+                      title="Click to remove this location"
+                      (click)="removeLocation(i)">
+                {{location}}
+                <span class="fa fa-times-circle"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+</fieldset>
+  </form>
+</div>

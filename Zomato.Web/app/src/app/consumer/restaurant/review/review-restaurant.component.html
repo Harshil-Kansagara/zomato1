@@ -1,0 +1,39 @@
+<section>
+  <mat-card class="review-add-card mat-elevation-z1">
+    <mat-card-title>Write a Review</mat-card-title>
+    <mat-card-content>
+      <form autocomplete="off" #form="ngForm" (submit)="addReview(); form.reset()">
+          <bar-rating name="rating" [(ngModel)]="review.rating" [max]="5" [required]="true"></bar-rating>
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+          <input matInput style="font-family:FontAwesome;" name="Review" placeholder="&#xf044; Help other foodies by sharing your review" [(ngModel)]="review.reviewData" #ReviewData="ngModel" [ngClass]="{'is-invalid': (ReviewData.touched || ReviewData.dirty) && !ReviewData.valid }" required>
+          <mat-error *ngIf="ReviewData.errors?.required">"Review is required"</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button class="btn btn-primary" [disabled]="form.invalid">Add Review</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
+<section>
+  <mat-card class="review-card mat-elevation-z1" *ngIf="reviewToggle">
+    <mat-card-title>Reviews</mat-card-title>
+    <hr />
+    <mat-card-content *ngFor="let reviews of reviewList">
+      <h5><b>{{reviews.userName}}</b></h5>
+        <bar-rating name="rating" [rate]="reviews.review.rating" [max]="5" disabled="true"></bar-rating>
+        <p>{{reviews.review.reviewData}}</p>
+        <p>Total Likes:{{reviews.likeCount}}</p>
+        <p>Totla Comments: {{reviews.commentCount}}</p>
+        <button mat-raised-button [style.background-color]="toggle ? 'white' : 'white'" (click)="addLike(reviews.review.reviewId)"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</button>
+        <button mat-raised-button style="margin-left:10px;" (click)="openAddCommentDialog(reviews.review.reviewId)">Comment</button>
+        <div *ngFor="let comment of reviews.comments" style="background-color:#f5f5f5; margin-top:10px;">
+              <img src="../../../../assets/cupcake.jpg" alt="Avatar" style="width:40px; border-radius: 50%; margin-top:10px; margin-left:10px;" align="left"/>
+              <h6 style="margin-top:10px"><b>{{comment.userName}}</b></h6>
+              <p>{{comment.commentData}}</p>
+          <hr />
+        </div>
+      <hr />
+    </mat-card-content>
+  </mat-card>
+</section>

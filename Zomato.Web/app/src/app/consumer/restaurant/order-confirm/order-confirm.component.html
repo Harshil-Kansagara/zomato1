@@ -1,0 +1,101 @@
+<section>
+  <mat-card class="order-card mat-elevation-z1">
+    <mat-card-title><h4>Order Detail</h4></mat-card-title>
+    <hr />
+    <mat-card-content style="margin-bottom:3px;">
+      <div class="container">
+        <div class="row">
+          <h6>
+            <b>Order Id:  </b>
+            <span>{{orderDetail.orderId}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6>
+            <b>Restaurant Name:  </b>
+            <span>{{orderDetail.restaurantName}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6>
+            <b>Delivery Date:  </b>
+            <span>{{orderDetail.date}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6><b><u>Order Item</u></b></h6>
+        </div>
+        <div class="row" *ngFor="let item of orderDetail.itemDetail">
+            <h6>{{item.itemName}}</h6>
+            <div class="container">
+              <div style="float:left; text-align:left;">
+                <p>{{item.itemQuantity}} x {{item.itemPrice | currency:'INR':true}}</p>
+              </div>
+              <div style="float:right; text-align:right;">
+                <p class="text--bold text--red js-product-total">{{item.itemQuantity * item.itemPrice | currency:'INR':true}}</p>
+              </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="container">
+            <div style="float:left; text-align:left;">
+              <h6> Sub Total ({{itemCount}} items): </h6>
+            </div>
+            <div style="float:right; text-align: right;">
+              <span>{{orderDetail.totalAmount | currency:'INR':true}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="user-card mat-elevation-z1">
+    <mat-card-title><h4>Personal Detail</h4></mat-card-title>
+    <hr />
+    <mat-card-content>
+      <div class="container">
+        <div class="row">
+          <h6>
+            <b>Name:  </b>
+            <span>{{orderDetail.userName}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6>
+            <b>Mobile Number:  </b>
+            <span>{{orderDetail.userNumber}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6>
+            <b>User Email:  </b>
+            <span>{{orderDetail.userEmail}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6>
+            <b>Delivery Address:  </b>
+            <span>{{orderDetail.deliveryLocation}}</span>
+          </h6>
+        </div>
+        <div class="row">
+          <h6>
+            <b>Delivery Date:  </b>
+            <span>{{orderDetail.date}}</span>
+          </h6>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <h5>{{display}}</h5>
+</section>
+<section>
+  <div class="container" style="margin-bottom:20px;">
+    <button mat-raised-button class="btn btn-outline-primary" (click)="cancel()">
+      Cancel Order
+    </button>
+    <a (click)="back()">Back to restaurant</a>
+  </div>
+</section>
+

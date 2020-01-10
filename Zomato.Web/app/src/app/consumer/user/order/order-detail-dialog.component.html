@@ -1,0 +1,56 @@
+<section>
+  <div style="overflow:hidden">
+    <h4 style="float:left;">
+      Order Detail
+    </h4>
+    <div style="margin-right:20px; float:right; cursor:pointer">
+      <i class="fa fa-times fa-lg" (click)="closeClick()"></i>
+    </div>
+  </div>
+  <hr />
+  <div style="overflow:hidden">
+    <div style="float:left;">
+      <h5>{{data.RestaurantName}}</h5>
+    </div>
+    <div style="float:right">
+      <p><b>Delivered Name:</b> {{data.UserName}}</p>
+      <p><b>Delivery Location:</b> {{data.DeliveryLocation}}</p>
+    </div>
+  </div>
+  <hr />
+  <div style="overflow:hidden">
+    <div style="float:left;">
+      <p><b>Order Id:</b> {{data.OrderId}}</p>
+    </div>
+    <div style="float:right">
+      <p><b>Date:</b> {{data.Date}}</p>
+    </div>
+  </div>
+  <div class="row container" *ngFor="let item of data.ItemDetail">
+    <h6>{{item.itemName}}</h6>
+    <div class="container">
+      <div style="float:left; text-align:left;">
+        <p>{{item.itemQuantity}} x {{item.itemPrice | currency:'INR':true}}</p>
+      </div>
+      <div style="float:right; text-align:right;">
+        <p class="text--bold text--red js-product-total">{{item.itemQuantity * item.itemPrice | currency:'INR':true}}</p>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <hr />
+  <div class="row">
+    <div class="container">
+      <div style="float:left; text-align:left;">
+        <h6> Sub Total : </h6>
+      </div>
+      <div style="float:right; text-align: right;">
+        <span>{{data.TotalAmount | currency:'INR':true}}</span>
+      </div>
+    </div>
+  </div>
+  <div>
+
+  </div>
+</section>
+<p></p>

@@ -1,0 +1,13 @@
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Zomato.Repository.deps.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Zomato.Repository.dll
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Zomato.Repository.pdb
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Zomato.DomainModel.dll
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Zomato.DomainModel.pdb
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\obj\Debug\netcoreapp2.2\Zomato.Repository.csprojAssemblyReference.cache
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\obj\Debug\netcoreapp2.2\Zomato.Repository.AssemblyInfoInputs.cache
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\obj\Debug\netcoreapp2.2\Zomato.Repository.AssemblyInfo.cs
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\obj\Debug\netcoreapp2.2\Zomato.Repository.csproj.CopyComplete
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\obj\Debug\netcoreapp2.2\Zomato.Repository.dll
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\obj\Debug\netcoreapp2.2\Zomato.Repository.pdb
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.SignalR.Core.dll
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.repository\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.SignalR.Core.xml

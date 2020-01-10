@@ -1,0 +1,12 @@
+<form #form="ngForm">
+  <div mat-dialog-content>
+    <p>Address:</p>
+    <mat-form-field>
+      <input matInput type="text" name="address" [(ngModel)]="data.Address" #address="ngModel" required placeholder="{{placeHolder}}" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" [disabled]="form.invalid">Ok</button>
+  </div>
+</form>

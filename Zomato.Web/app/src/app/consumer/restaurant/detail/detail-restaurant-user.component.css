@@ -1,0 +1,15 @@
+.restaurant-card { width: 700px; margin-top: 10px; margin-left: 30px; margin-bottom: 10px; display: inline-block; height:180px;}
+
+.card-container-right { float: right; font-size:16px;}
+
+.card-container-left { display: inline; font-size: 24px; }
+
+.address-card { width: 35%; margin-top: 10px; margin-right: 30px; margin-bottom: 10px; float: right; height: 180px; }
+
+.address-card mat-card-title {font-size:20px;}
+
+.address-card mat-card-content {font-size: 15px;}
+
+.address-card mat-card-actions {vertical-align:bottom;}
+
+.address-card mat-card-actions button{width:100%; font-size:16px; text-align:center;}

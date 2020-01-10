@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>New Item Name:</p>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" name="ItemName" [(ngModel)]="data.ItemName" #ItemName="ngModel" [ngClass]="{'is-invalid': (ItemName.touched || ItemName.dirty) && !ItemName.valid }" required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.ItemName" cdkFocusInitial>Ok</button>
+</div>

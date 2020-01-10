@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand">{{pageTitle}}</a>
+  <!--<ul class="navbar-nav ml-auto" *ngIf="!token">
+    <li class="nav-item">
+      <a class="nav-link text-dark" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" [routerLink]="['/register']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Register</a>
+    </li>
+  </ul>-->
+  <ul class="navbar-nav ml-auto" *ngIf="userToken">
+    <li class="nav-item" style="margin-top:10px;">
+      <!--<a href="#" class="notification">
+        <span>
+          <i class="fas fa-bell">
+            <span class="badge">{{notificationCount}}</span>
+          </i>
+        </span>
+        <span class="badge">3</span>
+      </a>-->
+      <div class="dropdown">
+        <button id="dropdownMenuButton" data-toggle="dropdown">
+          <i class="fas fa-bell">
+            <span class="badge">{{notificationCount}}</span>
+          </i>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <ng-container *ngFor="let each of orders">
+              <a class="dropdown-item" (click)="orderDetailDialog(each.orderId)">{{each.restaurantName}} has order</a>
+            </ng-container>
+          </div>
+        </button>
+
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark">Hello {{userName}}</a>
+    </li>
+    <li class="nav-item">
+      <button mat-raised-button (click)="logOut()">Log Out</button>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

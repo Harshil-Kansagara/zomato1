@@ -1,0 +1,115 @@
+<mat-card class="example-card">
+  <mat-card-header class="container">
+    <mat-card-title class="card-container-left">{{restaurantName}}</mat-card-title>
+    <mat-card-title class="card-container-right"><i class="fa fa-star" aria-hidden="true"></i> {{restaurantDetail.ratingAvg | number : '1.1-1'}}</mat-card-title>
+    <mat-card-subtitle style="margin-top:8px;">{{restaurantDetail.categories}}</mat-card-subtitle>
+    <mat-card-subtitle>{{restaurantDetail.restaurantLocation}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="Menu">
+        <div class="container">
+          <div class="text-center">
+            <mat-form-field>
+              <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+            <ng-container matColumnDef="ItemName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size:small;"> Item Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.ItemName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ItemPrice">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size:small;"> Item Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.ItemPrice}} </td>
+            </ng-container>
+            <!--<ng-container matColumnDef="ItemId">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element">
+                <button class="btn btn-link" (click)="deleteMenu(element.ItemId)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+              </td>
+            </ng-container>-->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 15, 20, 25]" showFirstLastButtons></mat-paginator>
+          <div>
+            <button mat-raised-button class="btn btn-primary" [routerLink]="['add-menu']">Add Menu</button>
+            <a [routerLink]="['/admin/restaurant']">Back to Restaurant</a>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Order">
+        <ng-template matTabContent>
+          <div class="container">
+            <div style="float:left">
+              <form autocomplete="off">
+                <mat-form-field appearance="outline" class="mat-form-field-width">
+                  <mat-label>Search Order</mat-label>
+                  <input matInput type="text" name="searchText" [(ngModel)]="searchText">
+                </mat-form-field>
+              </form>
+            </div>
+            <h5 style="float:right;">Total Order: {{totalOrder}}</h5>
+          </div>
+          <mat-grid-list cols="3" rowHeight="4:3">
+            <mat-grid-tile *ngFor="let each of orderList | filter:searchText | paginate: { itemsPerPage: 9, currentPage: p }; let i=index ">
+              <mat-card class="mat-elevation-z3 card-height">
+                <div class="container">
+                  <mat-card-header>
+                    <mat-card-title><h5>{{each.userName}}</h5></mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>Order Id: {{each.orderId}}</p>
+                    <p>Total Amount: {{each.totalAmount | currency:'INR':true}}</p>
+                    <p>Date: {{each.date}}</p>
+                  </mat-card-content>
+                  <mat-card-footer>
+                    <button class="btn btn-outline-primary" mat-raised-button style="margin-left:10px;margin-bottom:30px;" (click)="openDetailDialog(i)"><i class="fa fa-info-circle"> Detail</i></button>
+                  </mat-card-footer>
+                </div>
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          <div>
+            <a [routerLink]="['/admin/restaurant']">Back to Restaurant</a>
+          </div>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Review">
+        <ng-template matTabContent>
+          <div>
+            <mat-card class="review-card mat-elevation-z1" *ngIf="reviewToggle">
+              <mat-card-title>Reviews</mat-card-title>
+              <hr />
+              <mat-card-content *ngFor="let reviews of reviewList">
+                <div style="overflow:hidden;">
+                  <h5 style="float:left;"><b>{{reviews.userName}}</b></h5>
+                  <a style="cursor:pointer; float:right;" (click)="deleteReview(reviews.review.reviewId)"><i class="fa fa-trash fa-2x" style="color:red"></i></a>
+                </div>
+                <bar-rating name="rating" [rate]="reviews.review.rating" [max]="5" disabled></bar-rating>
+                <p>{{reviews.review.reviewData}}</p>
+                <p>Total Likes:{{reviews.likeCount}}</p>
+                <p>Totla Comments: {{reviews.commentCount}}</p>
+                <button mat-raised-button [style.background-color]="toggle ? 'white' : 'white'" (click)="addLike(reviews.review.reviewId)"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</button>
+                <button mat-raised-button style="margin-left:10px;" (click)="openAddCommentDialog(reviews.review.reviewId)">Comment</button>
+                <div *ngFor="let comment of reviews.comments" style="background-color:#f5f5f5; margin-top:10px;">
+                  <img src="../../../../assets/cupcake.jpg" alt="Avatar" style="width:40px; border-radius: 50%; margin-top:10px; margin-left:10px;" align="left" />
+                  <h6 style="margin-top:10px"><b>{{comment.userName}}</b></h6>
+                  <p>{{comment.commentData}}</p>
+                  <hr />
+                </div>
+                <hr />
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div>
+            <a [routerLink]="['/admin/restaurant']">Back to Restaurant</a>
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

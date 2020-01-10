@@ -1,0 +1,35 @@
+<section>
+  <div class="container">
+      <h4 style="float:left;"><b>Order History</b></h4>
+      <h5 style="float:right;">Total Order: {{totalOrder}}</h5>
+  </div>
+  <div class="container">
+    <form autocomplete="off">
+      <mat-form-field appearance="outline" class="mat-form-field-width">
+        <mat-label>Search Order</mat-label>
+        <input matInput type="text" name="searchText" [(ngModel)]="searchText">
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="container">
+    <mat-grid-list cols="2" rowHeight="5:3">
+      <mat-grid-tile *ngFor="let each of orderList | filter:searchText | paginate: { itemsPerPage: 9, currentPage: p } ; let i=index ">
+        <mat-card class="mat-elevation-z3">
+          <div class="container">
+            <mat-card-header>
+              <mat-card-title><h5>{{each.restaurantName}}</h5></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Order Id: {{each.orderId}}</p>
+              <p>Total Amount: {{each.totalAmount | currency:'INR':true}}</p>
+              <p>Date: {{each.date}}</p>
+            </mat-card-content>
+            <mat-card-footer>
+              <button class="btn btn-outline-primary" mat-raised-button style="margin-left:10px;" (click)="openDetailDialog(i)"><i class="fa fa-info-circle"> Detail</i></button>
+            </mat-card-footer>
+          </div>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</section>

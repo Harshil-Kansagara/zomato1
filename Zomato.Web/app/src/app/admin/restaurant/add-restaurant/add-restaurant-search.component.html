@@ -1,0 +1,27 @@
+<div class="card-body">
+  <form #form="ngForm" autocomplete="off">
+    <fieldset>
+      <legend>
+        Restaurant Search Tags
+      </legend>
+      <div class="row">
+        <div class="col-md-2">
+          <label>
+            <font size="4">Cuisine</font>
+          </label>
+            <div class="col-md-8" *ngFor="let each of cuisine">
+              <mat-checkbox value="{{each.cuisineId}}" [name]="each.cuisineName"  (click)='checkedCuisine(each.cuisineId)' required>{{each.cuisineName}}</mat-checkbox>
+            </div>
+        </div>
+        <div class="col-md-2">
+          <label>
+            <font size="4">Category</font>
+          </label>
+          <div class="col-md-8" *ngFor="let each of category">
+            <mat-checkbox value="{{each.categoryId}}" [name]="each.categoryName" (click)='checkedCategory(each.categoryId)' required>{{each.categoryName}}</mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

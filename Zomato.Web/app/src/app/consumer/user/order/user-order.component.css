@@ -1,0 +1,8 @@
+.container {
+  overflow:hidden;
+}
+
+mat-card { width: 330px; border-radius: 1px; }
+
+mat-card-footer { margin-bottom: 5px; }
+

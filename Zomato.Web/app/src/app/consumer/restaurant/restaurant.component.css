@@ -1,0 +1,28 @@
+/*.navbar {margin-bottom:25px;}*/
+.navbar-brand img { width: 50px; height: 50px; margin-left: 30px; }
+
+.navbar button { background-color: #CF2A27; color: white; text-align: center; font-weight: bold; font-size: 16px; }
+
+.navbar button:hover { background-color: white; color: #CF2A27; }
+
+.close-tag { margin-left: 20px; margin-top: 20px; }
+
+.account-class { margin-top: 60px; margin-left: 50px; }
+
+.account-class h5 { margin-top: 20px; }
+
+.account-class h5 a { text-decoration: none; color: deepskyblue; }
+
+.account-class h5 a:hover { text-decoration: underline; }
+
+/*.login-form {margin-top:20px;}*/
+
+.account-class button { background-color: #CF2A27; color: white; font-weight: bold; font-size: 18px; cursor: pointer; }
+
+/*.account-class button:hover { background-color: white; color: #CF2A27; }*/
+
+.mat-form-field-width { width: 400px; }
+
+.fa-times:hover { cursor: pointer; }
+
+.token a:hover{text-decoration:underline; cursor:pointer;}

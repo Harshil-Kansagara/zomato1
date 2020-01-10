@@ -1,0 +1,61 @@
+<section>
+  <div class="container" style="overflow:hidden;">
+    <div class="float-left" style="width:58%">
+      <div style="overflow:hidden;">
+        <div class="float-left" style="width:40%">
+          <mat-card class="mat-elevation-z1">
+            <mat-card-title style="font-size:20px;">Following ({{this.followingCount}})</mat-card-title>
+            <hr />
+            <mat-card-content>
+              <div *ngFor="let each of following" style="overflow:hidden;">
+                <div class="float-left">
+                  <p>{{each.userName}}</p>
+                </div>
+                <div class="float-right">
+                  <a style="cursor:pointer;" (click)="deleteFollowing(each.userId)">
+                    <i class="fas fa-user-check"></i>
+                  </a>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="float-right" style="width:40%">
+          <mat-card class="mat-elevation-z1">
+            <mat-card-title style="font-size:20px;">Follower ({{this.followerCount}})</mat-card-title>
+            <hr />
+            <mat-card-content>
+              <div *ngFor="let each of follower" style="overflow:hidden;">
+                <div class="float-left">
+                  <p>{{each.userName}}</p>
+                </div>
+                <!--<div class="float-right">
+                  <a style="cursor:pointer;" (click)="deleteFollowers(each.userId)">
+                    <i class="fas fa-user-check"></i>
+                  </a>
+                </div>-->
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="float-right" style="width:35%">
+      <mat-card class="mat-elevation-z3">
+        <mat-card-title style="font-size:20px;">Suggested Foodie to Follow</mat-card-title>
+        <mat-card-content>
+          <div *ngFor="let each of userList" style="overflow:hidden;">
+            <div class="float-left">
+              <p>{{each.userName}}</p>
+            </div>
+            <div class="float-right">
+              <a style="cursor:pointer;" (click)="addFollower(each.id)">
+                <i class="fa fa-user-plus"></i>
+              </a>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

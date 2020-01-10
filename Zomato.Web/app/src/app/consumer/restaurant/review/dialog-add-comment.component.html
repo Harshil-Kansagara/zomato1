@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Comment:</p>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="data.commentData" placeholder="Write a comment.." required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data">Ok</button>
+</div>

@@ -1,0 +1,67 @@
+<section>
+  <mat-card class="order-card mat-elevation-z1">
+    <mat-card-title><h4>Your Order List</h4></mat-card-title>
+    <hr />
+    <mat-card-content>
+      <div *ngFor="let item of cartItems">
+        <div class="container">
+          <h6><b>{{item.menu.itemName}}</b></h6>
+          <div class="container">
+            <div style="float:left; text-align:left;">
+              <p>{{item.ItemQuantity}} x {{item.menu.itemPrice | currency:'INR':true}}</p>
+            </div>
+            <div style="float:right; text-align:right;">
+              <p class="text--bold text--red js-product-total">{{item.totalCost| currency:'INR':true}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="container">
+        <div style="float:left; text-align:left;">
+          <h5> Sub Total ({{itemCount}} items): </h5>
+        </div>
+        <div style="float:right; text-align: right;">
+          <span class="text--red text--bold js-cart-total">{{(cart | async).itemsTotal | currency:'INR':true}}</span>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer style="margin-bottom:3px;">
+      <div class="container">
+        <h5 style="color:red"
+            *ngIf="(cart | async).deliveryAddressId === 0">
+          Please select a delivery address...
+        </h5>
+        <button mat-raised-button class="btn btn-primary"
+                *ngIf="(cart | async).deliveryAddressId !== 0" (click)="placeOrder()">
+          Place Order
+        </button>
+        <button mat-raised-button class="btn btn-secondary" style="margin-left:5px;"
+                (click)="emptyCart()"
+                [attr.disabled]="itemCount === 0 ? true : null">
+          Empty Cart
+        </button>
+        <button mat-raised-button class="btn btn-secondary" style="margin-left:5px;"
+                (click)="addItem()"
+                [attr.disabled]="itemCount === 0 ? true : null">
+          Add Item
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="address-card mat-elevation-z1">
+    <mat-card-title>Delivery Address</mat-card-title>
+    <mat-card-content>
+      <mat-radio-group>
+        <div *ngFor="let each of addressList">
+          <mat-radio-button [value]="each.addressId" [checked]="each.addressId === (cart | async).deliveryAddressId" (click)=" setDeliveryAddress(each)">
+            {{each.address}}
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="checkUserLogin()">Add New Location</button>
+    </mat-card-actions>
+  </mat-card>
+</section>

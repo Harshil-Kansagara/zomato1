@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav-content style="height: 100%;">
+    <section>
+      <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand" [routerLink]="['']">
+          <img src="../../../assets/logo.png" alt="logo">
+        </a>
+        <div>
+          <a style="margin-right:15px;">Hi, {{user.userName}}</a>
+          <button mat-raised-button (click)="logoutUser()" style="margin-right:30px;">Log Out</button>
+        </div>
+      </nav>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<section>
+  <div class="user-card">
+    <mat-card class="mat-elevation-z1">
+      <mat-card-header>
+        <mat-card-title><h4>User Name: {{user.userName}}</h4></mat-card-title>
+        <mat-card-subtitle style="margin-top:5px;"><h6>{{user.phoneNumber}}</h6></mat-card-subtitle>
+        <mat-card-subtitle style="margin-top:5px;"><h6>{{user.email}}</h6></mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</section>
+<section>
+    <mat-card class="list-card mat-elevation-z1">
+      <mat-nav-list class="wizard">
+        <a mat-list-item [routerLink]="['address']" routerLinkActive="active">Addresses</a>
+        <a mat-list-item [routerLink]="['order']" routerLinkActive="active">Orders</a>
+        <a mat-list-item [routerLink]="['follow']" routerLinkActive="active">Followers</a>
+        <a mat-list-item [routerLink]="['review']" routerLinkActive="active">Reviews</a>
+      </mat-nav-list>
+    </mat-card>
+  <div class="router-class">
+    <router-outlet></router-outlet>
+  </div>
+</section>

@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <div class="wizard">
+      <a [routerLink]="['info']" routerLinkActive="active">
+        Basic Information
+        <span [ngClass]="{'fa fa-exclamation': !isValid('info')}"></span>
+      </a>
+      <a [routerLink]="['search']" routerLinkActive="active">
+        Search Tags
+        <span [ngClass]="{'fa fa-exclamation': !isValid('tags')}"></span>
+      </a>
+    </div>
+    <router-outlet></router-outlet>
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <button mat-raised-button class="btn btn-primary mr-3" style="width:80px" type="button" [title]="isValid() ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!isValid()" (click)="saveRestaurant()">
+          Save
+        </button>
+        <button mat-raised-button class="btn btn-outline-secondary mr-3" style="width:80px" type="button" title="Cancel your edits" [routerLink]="['/admin/restaurant']">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<form #form="ngForm" autocomplete="off" (submit)="save()">
+      <div class="row" style="margin-left:20px">
+        <mat-form-field appearance="outline">
+          <mat-label>Location</mat-label>
+          <input matInput name="Location" type="text" [(ngModel)]="newLocation" #Location="ngModel" [ngClass]="{'is-invalid': (Location.touched || Location.dirty) && !Location.valid }" required>
+          <mat-error *ngIf="UserEmailAddress.errors?.required">"Location is required"</mat-error>
+      <mat-error *ngIf="UserEmailAddress.errors?.email">"Location is required"</mat-error>
+        </mat-form-field>
+        <div>
+          <button class="btn btn-outline-primary"
+                  type="button"
+                  (click)="addLocations()">
+            Add
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <span *ngFor="let location of restaurant.Location; let i = index">
+            <button class="btn btn-outline-secondary"
+                    style="font-size:smaller;margin-bottom:12px;margin-right:2px"
+                    title="Click to remove this location"
+                    (click)="removeLocation(i)">
+              {{location}}
+              <span class="fa fa-times-circle"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div *ngFor="let each of cuisine">
+    <mat-checkbox value="{{each.cuisineId}}" [name]="each.cuisineName" (click)='checkedCuisine(each.cuisineId)'>{{each.cuisineName}}</mat-checkbox>
+  </div>
+  <div>-----------</div>
+  <div *ngFor="let each of category">
+    <mat-checkbox value="{{each.categoryId}}" [name]="each.categoryName" (change)='checkedCategory(each.categoryId)'>{{each.categoryName}}</mat-checkbox>
+  </div>
+      <div class="row" style="margin-left:20px;margin-top:10px">
+        <button mat-raised-button class="btn btn-primary" [disabled]="form.invalid">Add</button>
+        <a style="margin-left:20px" value="submit" [routerLink]="['/admin/restaurant']">Cancel</a>
+      </div>
+    </form>-->

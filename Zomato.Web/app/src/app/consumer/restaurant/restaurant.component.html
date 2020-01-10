@@ -1,0 +1,90 @@
+<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+  <mat-sidenav #sidenav [mode]="over" position="end" disableClose [fixedInViewport]="true" style="width:500px;">
+    <div class="close-tag">
+      <i class="fa fa-times fa-lg" (click)="sidenav.toggle()"></i>
+    </div>
+    <!-- Login Form -->
+    <div class="account-class" *ngIf="!registerToken">
+      <h2>Login</h2>
+      <h5>or <a href="" (click)="reg()" onclick="return false;">Create an account</a></h5>
+      <form #form="ngForm" autocomplete="off" (submit)="loginUser()">
+        <div class="row" style="margin-top:20px;">
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+            <mat-label>Email</mat-label>
+            <input matInput email name="UserEmailAddress" [(ngModel)]="login.UserEmailAddress" #UserEmailAddress="ngModel" [ngClass]="{'is-invalid': (UserEmailAddress.touched || UserEmailAddress.dirty) && !UserEmailAddress.valid }" required>
+            <mat-error *ngIf="UserEmailAddress.errors?.required">"Email Id is required"</mat-error>
+            <mat-error *ngIf="UserEmailAddress.errors?.email">"Valid Email Id is required"</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="UserPassword" [(ngModel)]="login.UserPassword" #UserPassword="ngModel" [ngClass]="{'is-invalid': (UserPassword.touched || UserPassword.dirty) && !UserPassword.valid }" required minlength="8">
+            <mat-error *ngIf="UserPassword.errors?.required">"Password is required"</mat-error>
+            <mat-error *ngIf="UserPassword.errors?.minlength">"Password should be of minimum length 8"</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button [disabled]="form.invalid">Login</button>
+        </div>
+      </form>
+    </div>
+    <!--Register Form-->
+    <div class="account-class" *ngIf="registerToken">
+      <h2>Register</h2>
+      <h5>or <a href="" (click)="log()" onclick="return false;">Already have an account</a></h5>
+      <form #form="ngForm" autocomplete="off" (submit)="registerUser()">
+        <div class="row" style="margin-top:20px;">
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+            <mat-label>Name</mat-label>
+            <input matInput required name="UserName" [(ngModel)]="register.UserName" #UserName="ngModel" [ngClass]="{'is-invalid': (UserName.touched || UserName.dirty) && !UserName.valid }">
+            <mat-error *ngIf="UserName.errors?.required">"Name is required"</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput number name="UserMobileNumber" [(ngModel)]="register.UserMobileNumber" #UserPhoneNumber="ngModel" [ngClass]="{'is-invalid': (UserPhoneNumber.touched || UserPhoneNumber.dirty) && !UserPhoneNumber.valid }" required minlength="10" maxlength="10">
+            <mat-error *ngIf="UserPhoneNumber.errors?.required">"Mobile Number is required"</mat-error>
+            <mat-error *ngIf="UserPhoneNumber.errors?.minlength">"Provide phone number of 10 digit"</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row login-form">
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+            <mat-label>Email</mat-label>
+            <input matInput email name="UserEmailAddress" [(ngModel)]="register.UserEmailAddress" #Email="ngModel" [ngClass]="{'is-invalid': (Email.touched || Email.dirty) && !Email.valid }" required>
+            <mat-error *ngIf="Email.errors?.required">"Email is required"</mat-error>
+            <mat-error *ngIf="Email.errors?.email">"Provide valid Email"</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row login-form">
+          <mat-form-field appearance="outline" class="mat-form-field-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="UserPassword" [(ngModel)]="register.UserPassword" #Password="ngModel" [ngClass]="{'is-invalid': (Password.touched || Password.dirty) && !Password.valid }" required minlength="8">
+            <mat-error *ngIf="Password.errors?.required">"Password is required"</mat-error>
+            <mat-error *ngIf="Password.errors?.minlength">"Password of min length 8 is required"</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button [disabled]="form.invalid">Register</button>
+        </div>
+      </form>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content style="height: 100%;">
+    <section>
+      <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand" [routerLink]="['']">
+          <img src="../../../assets/logo.png" alt="logo">
+        </a>
+        <button mat-raised-button (click)="sidenav.toggle()" *ngIf="!userToken" style="margin-right:30px;">Login</button>
+        <div class="token" *ngIf="userToken">
+          <a (click)="navigateUserProfile()" style="margin-right:15px;">Hi, {{userName}}</a>
+          <button mat-raised-button (click)="logoutUser()" style="margin-right:30px;">Log Out</button>
+        </div>
+      </nav>
+    </section>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

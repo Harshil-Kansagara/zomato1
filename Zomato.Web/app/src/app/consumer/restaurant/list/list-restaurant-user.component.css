@@ -1,0 +1,42 @@
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important; }
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label { transform: translateY(-1.1em) scale(.75); width: 133.33333%; }
+
+.card-container-right { float: right; margin-right:30px;}
+
+.card-container-left { display:inline; margin-left:30px;}
+
+.card-container-right a {text-decoration:none; font-size:20px; color:#ff9900;}
+
+.card-container-right a:hover {text-decoration:underline; cursor:pointer;}
+
+.mat-form-field-width {width:180px; margin-right:20px;}
+
+hr { margin-top: 30px; margin-right: 10px; margin-left: 10px; background-color:black; }
+
+.mat-card-title h4 { font-size: 28px; font-weight: 400; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif }
+
+.mat-card-content p { font-size: 16px; font-weight: 100; }
+
+.mat-card-button { float: right; background-color: #81c784; color: white; text-align: center; font-weight: 500; font-size: 16px; }
+
+.mat-card-button:hover { background-color: white; color: #81c784; }
+
+.mat-card-rating { color: #ff9900; }
+
+.fa-times { margin-left: 40px; margin-top: 20px; color:#ff9900;}
+
+.fa-times:hover { cursor: pointer; }
+
+.filter { margin-left: 20px; margin-top: 20px; font-size: 22px; color: #ff9900; }
+
+h5 {margin-left: 35px; margin-top:40px; font-size:24px; text-decoration: underline;}
+
+.clear-btn { margin-left: 40px; margin-top:20px; font-size:18px; font-weight: bold;}
+
+.clear-btn:hover {background-color:deepskyblue; color:white;}
+
+.show-restaurant-btn { margin-left: 40px; margin-top: 20px; font-size: 18px; font-weight: bold; }
+
+.show-restaurant-btn:hover { background-color: deepskyblue; color: white; }

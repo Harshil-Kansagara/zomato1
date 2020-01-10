@@ -1,0 +1,80 @@
+<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+  <mat-sidenav #sidenav [mode]="over" position="end" disableClose [fixedInViewport]="true" style="width:500px;">
+    <div class="row">
+      <i class="fa fa-times fa-2x" (click)="sidenav.toggle()"></i>
+      <h5 class="filter">Filter</h5>
+    </div>
+    <div>
+      <h5>Cuisines</h5>
+    </div>
+    <div>
+      <mat-grid-list cols="2" rowHeight="6:1">
+        <mat-grid-tile *ngFor="let each of cuisines" style="text-align:left;">
+          <ng-container *ngIf="isChecked(each.cuisineId)">
+            <mat-checkbox checked="true" value="{{each.cuisineId}}" [name]="each.cuisineName" (click)='checkedCuisine(each.cuisineId)' required>{{each.cuisineName}}</mat-checkbox>
+          </ng-container>
+          <ng-container *ngIf="!isChecked(each.cuisineId)">
+            <mat-checkbox  value="{{each.cuisineId}}" [name]="each.cuisineName" (click)='checkedCuisine(each.cuisineId)' required>{{each.cuisineName}}</mat-checkbox>
+          </ng-container>
+          
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="row">
+      <button mat-raised-button class="clear-btn" (click)="unCheck()"> Clear </button>
+      <button mat-raised-button class="show-restaurant-btn" (click)="showRestaurant()"> Show Restaurants </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content style="height: 100%;">
+    <section>
+      <div class="container-fluid">
+        <h5 class="card-container-left" style="text-align:justify;">
+          {{heading}}
+        </h5>
+        <div class="card-container-right">
+          <form autocomplete="off" style="display:inline">
+            <mat-form-field appearance="outline" class="mat-form-field-width">
+              <mat-label>Search</mat-label>
+              <input matInput type="text" name="searchText" [(ngModel)]="searchText">
+            </mat-form-field>
+          </form>
+          <a click="return false;" style="display:inline" (click)="sidenav.toggle()">Filter <i class="fa fa-filter"></i></a>
+        </div>
+      </div>
+    </section>
+    <section class="mt-3 ml-5" *ngIf="cuisineName">
+      <span *ngFor="let name of cuisineName">
+        <button mat-raised-button class="btn btn-outline-primary mr-3"
+                style="font-size:smaller;margin-bottom:12px;margin-right:2px; color:blue"
+                title={{name}} disabled>
+          {{name}}
+        </button>
+      </span>
+      <a mat-raised-button (click)="clearAll()">Clear All</a>
+    </section>
+    <section>
+      <mat-grid-list cols="3" rowHeight="4:2">
+        <mat-grid-tile *ngFor="let each of restaurantList| filter:searchText | paginate: { itemsPerPage: 9, currentPage: p }">
+          <mat-card class="mat-elevation-z1" style="width:350px; border-radius:1px;">
+            <div class="container">
+              <mat-card-header>
+                <mat-card-title><h4>{{each.restaurant.restaurantName}}</h4></mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{each.cuisines}}</p>
+              </mat-card-content>
+              <mat-card-actions>
+                <span class="mat-card-rating">
+                  <i class="fa fa-star" aria-hidden="true"></i> {{each.ratingAvg | number : '1.1-1'}}
+                </span>
+                <button mat-raised-button class="mat-card-button" (click)="resDetail(each.restaurant.restaurantName)">Order Now</button>
+              </mat-card-actions>
+            </div>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

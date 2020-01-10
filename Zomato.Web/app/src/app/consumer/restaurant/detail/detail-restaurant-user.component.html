@@ -1,0 +1,23 @@
+<section>
+    <mat-card class="restaurant-card mat-elevation-z1">
+      <mat-card-header class="container">
+        <mat-card-subtitle style="font-size:14px;">Order Food from</mat-card-subtitle>
+        <mat-card-title class="card-container-left" style="margin-top:10px;">{{restaurantName}}</mat-card-title>
+        <mat-card-title class="card-container-right"><i class="fa fa-star" aria-hidden="true"></i> {{restaurantDetail.ratingAvg | number : '1.1-1'}}</mat-card-title>
+        <mat-card-subtitle style="margin-top:4px; font-size:16px" >{{restaurantDetail.cuisines}}</mat-card-subtitle>
+        <mat-card-subtitle style="font-size:16px;">{{restaurantDetail.restaurantLocation}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+</section>
+<section>
+  <mat-card style="margin-left:30px; margin-right:30px;">
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link style="font-size:18px;" *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        {{link.label}}
+      </a>
+    </nav>
+  </mat-card>
+</section>
+<section>
+  <router-outlet></router-outlet>
+</section>
