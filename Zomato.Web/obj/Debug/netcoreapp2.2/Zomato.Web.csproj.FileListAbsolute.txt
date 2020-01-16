@@ -1,3 +1,6 @@
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\Zomato.Web.deps.json
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\Zomato.Web.runtimeconfig.json
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\Zomato.Web.runtimeconfig.dev.json
@@ -11,7 +14,6 @@ C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcor
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\Zomato.DomainModel.pdb
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\Zomato.Repository.pdb
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.csprojAssemblyReference.cache
-C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.csproj.CoreCompileInputs.cache
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.RazorAssemblyInfo.cache
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.RazorAssemblyInfo.cs
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.AssemblyInfoInputs.cache
