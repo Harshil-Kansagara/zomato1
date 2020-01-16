@@ -8,14 +8,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '8.x'
     - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
-    - name: Dotnet Restore
-      run: dotnet restore
-    - name: Running npm
+    - name: Install Dependencies
       run: npm install
     - name: Build with dotnet
       run: dotnet build --configuration Release
