@@ -7,3 +7,4 @@ C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.DomainModel\obj\Debu
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.DomainModel\obj\Debug\netcoreapp2.2\Zomato.DomainModel.AssemblyInfo.cs
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.DomainModel\obj\Debug\netcoreapp2.2\Zomato.DomainModel.dll
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.DomainModel\obj\Debug\netcoreapp2.2\Zomato.DomainModel.pdb
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.DomainModel\obj\Debug\netcoreapp2.2\Zomato.DomainModel.csprojAssemblyReference.cache
