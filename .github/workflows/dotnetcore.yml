@@ -15,5 +15,7 @@ jobs:
         dotnet-version: 2.2.108
     - name: Dotnet Restore
       run: dotnet restore
+    - name: Running npm
+      run: npm install
     - name: Build with dotnet
       run: dotnet build --configuration Release
