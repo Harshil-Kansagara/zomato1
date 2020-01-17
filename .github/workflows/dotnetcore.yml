@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Change Directory
-      run: cd ../../Zomato.Web/app
+      run: cd
     - name: Install Dependencies
       run: npm install
     - name: Build with dotnet
