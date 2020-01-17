@@ -17,9 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
-    - name: Change Directory
-      run: cd Zomato.Web/app
     - name: Install Dependencies
-      run: npm install
+      run: cd Zomato.Web/app && npm install
     - name: Build with dotnet
       run: dotnet build --configuration Release
