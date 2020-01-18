@@ -22,3 +22,11 @@ C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcor
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.csproj.CopyComplete
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.dll
 C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\obj\Debug\netcoreapp2.2\Zomato.Web.pdb
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\angular.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\e2e\tsconfig.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\package-lock.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\package.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\tsconfig.app.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\tsconfig.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\tsconfig.spec.json
+C:\Users\harshilkansagara\source\repos\Zomato\Zomato\Zomato.Web\bin\Debug\netcoreapp2.2\app\tslint.json
