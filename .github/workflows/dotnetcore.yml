@@ -21,7 +21,7 @@ jobs:
       working-directory: Zomato.Web/app
       run: npm install
     - name: Build with dotnet
-      run: dotnet build --configuration Release
-    - name: Build angular
+      run: dotnet build
+    - name: Build with angular
       working-directory: Zomato.Web/app
       run: npm run build
