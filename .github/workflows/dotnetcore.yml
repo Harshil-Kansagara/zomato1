@@ -20,8 +20,8 @@ jobs:
     - name: Install Dependencies
       working-directory: Zomato.Web/app
       run: npm install
-    - name: Build with angular
-      working-directory: Zomato.Web/app
-      run: npm update --save-dev @types/node
     - name: Build with dotnet
       run: dotnet build
+    - name: Build with angular
+      working-directory: Zomato.Web/app
+      run: npm run build
