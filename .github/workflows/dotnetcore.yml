@@ -19,9 +19,9 @@ jobs:
         dotnet-version: 2.2.108
     - name: Install Dependencies
       working-directory: Zomato.Web/app
-      run: npm install
-    - name: Build with dotnet
-      run: dotnet build
+      run: npm ci
     - name: Build with angular
       working-directory: Zomato.Web/app
-      run: npm run build
+      run: npm run build-prod
+    - name: Build with dotnet
+      run: dotnet build
