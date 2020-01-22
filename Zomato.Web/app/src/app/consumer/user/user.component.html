@@ -6,7 +6,7 @@
           <img src="../../../assets/logo.png" alt="logo">
         </a>
         <div>
-          <a style="margin-right:15px;">Hi, {{user.userName}}</a>
+          <a style="margin-right:15px;">Hi, {{user.UserName}}</a>
           <button mat-raised-button (click)="logoutUser()" style="margin-right:30px;">Log Out</button>
         </div>
       </nav>
@@ -17,9 +17,9 @@
   <div class="user-card">
     <mat-card class="mat-elevation-z1">
       <mat-card-header>
-        <mat-card-title><h4>User Name: {{user.userName}}</h4></mat-card-title>
-        <mat-card-subtitle style="margin-top:5px;"><h6>{{user.phoneNumber}}</h6></mat-card-subtitle>
-        <mat-card-subtitle style="margin-top:5px;"><h6>{{user.email}}</h6></mat-card-subtitle>
+        <mat-card-title><h4>User Name: {{user.UserName}}</h4></mat-card-title>
+        <mat-card-subtitle style="margin-top:5px;"><h6>{{user.UserMobileNumber}}</h6></mat-card-subtitle>
+        <mat-card-subtitle style="margin-top:5px;"><h6>{{user.UserEmailAddress}}</h6></mat-card-subtitle>
       </mat-card-header>
     </mat-card>
   </div>

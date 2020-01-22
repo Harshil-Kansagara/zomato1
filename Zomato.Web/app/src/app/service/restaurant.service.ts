@@ -51,7 +51,10 @@ export class RestaurantService {
       RestaurantName: '',
       Location: [],
       CuisineId: [],
-      CategoryId: []
+      CategoryId: [],
+      RatingAvg: 0,
+      Cuisines: [],
+      RestaurantLocation: null
     }
   }
 }

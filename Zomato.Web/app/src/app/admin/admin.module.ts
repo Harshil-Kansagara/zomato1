@@ -81,15 +81,15 @@ const routes: Routes = [
     AddRestaurantSearchComponent,
     DetailRestaurantComponent,
     AddMenuComponent,
-    OrderDetailDialogComponent,
-    addCommentDialogComponent
+    //OrderDetailDialogComponent,
+  //  addCommentDialogComponent
   ],
   providers: [Debuger, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthAdminInterceptor,
     multi: true
   }],
-  entryComponents: [OrderDetailDialogComponent, addCommentDialogComponent]
+  //entryComponents: [OrderDetailDialogComponent]//, addCommentDialogComponent]
 })
 
 export class AdminModule {

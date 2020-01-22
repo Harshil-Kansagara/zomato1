@@ -108,7 +108,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.cartService.empty();
   }
 
-  itemInCart(menu: any): boolean {
+  itemInCart(menu: any) {
     var a = Observable.create((obs: Observer<boolean>) => {
       const sub = this.cartService
         .get()

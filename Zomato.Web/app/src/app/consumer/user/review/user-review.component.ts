@@ -68,7 +68,7 @@ export class UserReviewComponent implements OnInit, OnDestroy {
     );
   }
 
-  private deleteReview(reviewId: number) {
+  deleteReview(reviewId: number) {
     if (confirm("Are you sure you want to delete this review ?")) {
       this.reviewSubscription = this.reviewService.deleteReview(reviewId).subscribe(
         res => {

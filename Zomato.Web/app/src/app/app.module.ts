@@ -9,8 +9,11 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { Debuger } from './service/debug.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AdminComponent, OrderDetailAdminDialogComponent } from './admin/admin.component';
-import { MatButtonModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { OrderNotificationService } from './service/order-notification.service';
+import { addCommentDialogComponent } from './consumer/restaurant/review/review-restaurant.component';
+import { OrderDetailDialogComponent } from './consumer/user/order/user-order.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,20 +21,24 @@ import { OrderNotificationService } from './service/order-notification.service';
     AppComponent,
     AdminComponent,
     PageNotFoundComponent,
-    OrderDetailAdminDialogComponent
+    addCommentDialogComponent,
+    OrderDetailAdminDialogComponent,
+    OrderDetailDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatIconModule, MatDialogModule,
+    MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatInputModule,
     ToastrModule.forRoot({
       progressBar: true
     }),
     AppRoutingModule
   ],
   providers: [OrderNotificationService],
-  entryComponents: [OrderDetailAdminDialogComponent],
+  entryComponents: [OrderDetailAdminDialogComponent, addCommentDialogComponent, OrderDetailDialogComponent],
   //providers: [],
   bootstrap: [AppComponent]
 })

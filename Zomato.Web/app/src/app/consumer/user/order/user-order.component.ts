@@ -16,11 +16,11 @@ import { Order } from '../../../model/order';
 
 export class UserOrderComponent implements OnInit, OnDestroy {
 
-  private token; userId; decode_token; searchText: string;
-  private totalOrder: number = 0;
+  token; userId; decode_token; searchText: string;
+  totalOrder: number = 0;
   p: number = 1;
   private orderSubscription: Subscription;
-  private orderList: OrderDetail[] = new Array<OrderDetail>();
+  orderList: OrderDetail[] = new Array<OrderDetail>();
   
   constructor(private toastr: ToastrService, private orderService: OrderService,
               public dialog: MatDialog) { }
@@ -36,7 +36,7 @@ export class UserOrderComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getUserId(): void {
+  getUserId(): void {
     this.token = localStorage.getItem('token');
     if (this.token != null) {
       this.decode_token = jwt_decode(this.token);
@@ -46,7 +46,7 @@ export class UserOrderComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getOrderList(): void {
+   getOrderList(): void {
     this.orderSubscription = this.orderService.getOrderByUser(this.userId).subscribe(
       res => {
         this.orderList = res as OrderDetail[];
@@ -57,7 +57,7 @@ export class UserOrderComponent implements OnInit, OnDestroy {
     );
   }
 
-  private openDetailDialog(id: number): void {
+  openDetailDialog(id: number): void {
     const dialogRef = this.dialog.open(OrderDetailDialogComponent, {
       width: '550px',
       data: {
