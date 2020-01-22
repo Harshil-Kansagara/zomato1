@@ -88,8 +88,8 @@ namespace Zomato.Repository.Test.Modules.NotificationTesting
         public async Task RemoveOrderNotificationData_Verify()
         {
             var givenOrderId = 1;
-            var orderNotification = new List<OrderNotification>();
-            _dataRepositoryMock.Setup(x=>x.Where(It.IsAny<Expression<Func<OrderNotification, bool>>>())).Returns(orderNotification.AsQueryable().BuildMock().Object);
+            var orderNotification = new List<OrderNotificationData>();
+            _dataRepositoryMock.Setup(x=>x.Where(It.IsAny<Expression<Func<OrderNotificationData, bool>>>())).Returns(orderNotification.AsQueryable().BuildMock().Object);
             await _notificationRepository.RemoveOrderNotificationData(givenOrderId);
             _dataRepositoryMock.Verify(x => x.Remove(orderNotification), Times.Exactly(orderNotification.Count));
         }

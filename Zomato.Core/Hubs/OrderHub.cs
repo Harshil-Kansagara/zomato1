@@ -24,19 +24,21 @@ namespace Zomato.Core.Hubs
             if (a) {
                 var orderNotificationList = await _unitOfWork.OrderNotificationRepository.GetOrderNotification();
                 var connectionList = await _unitOfWork.OrderNotificationRepository.GetConnectionList();
-                foreach (var each in connectionList)
-                {
-                    if (each.UserId == "4aa56cd4-3ac4-4be0-af99-5933372d8a22")
+                if(orderNotificationList.Count != 0) { 
+                    foreach (var each in connectionList)
                     {
-                        foreach (var each1 in orderNotificationList)
+                        if (each.UserId == "4aa56cd4-3ac4-4be0-af99-5933372d8a22")
                         {
-                            var restaurantName = await _unitOfWork.RestaurantRepository.GetRestaurantNameById(await _unitOfWork.OrderRepository.GetRestaurantIdByOrderId(each1.OrderId));
-                            OrderNotification orderNotification = new OrderNotification();
-                            orderNotification.OrderId = each1.OrderId;
-                            orderNotification.RestaurantName = restaurantName;
-                            await Clients.Client(each.ConnectionId).SendAsync("OrderReceived", orderNotification);
-                        }
+                            foreach (var each1 in orderNotificationList)
+                            {
+                                var restaurantName = await _unitOfWork.RestaurantRepository.GetRestaurantNameById(await _unitOfWork.OrderRepository.GetRestaurantIdByOrderId(each1.OrderId));
+                                OrderNotification orderNotification = new OrderNotification();
+                                orderNotification.OrderId = each1.OrderId;
+                                orderNotification.RestaurantName = restaurantName;
+                                await Clients.Client(each.ConnectionId).SendAsync("OrderReceived", orderNotification);
+                            }
                         
+                        }
                     }
                 }
             }

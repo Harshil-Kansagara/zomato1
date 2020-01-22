@@ -57,7 +57,7 @@ namespace Zomato.Repository.NotificationRepository
 
         public async Task RemoveOrderNotificationData(int orderId)
         {
-            var orderList = await _dataRepository.Where<OrderNotification>(x => x.OrderId == orderId).ToListAsync();
+            var orderList = await _dataRepository.Where<OrderNotificationData>(x => x.OrderId == orderId).ToListAsync();
             if (orderList != null)
             {
                 foreach (var each in orderList)
