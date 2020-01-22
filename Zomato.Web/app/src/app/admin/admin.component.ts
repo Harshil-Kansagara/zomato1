@@ -76,7 +76,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     window.location.href = '/admin';
   }
 
-  private orderDetailDialog(orderId: number) {
+  orderDetailDialog(orderId: number) {
     console.log(orderId);
     this.orderSubscritpion = this.orderService.getOrderDetail(orderId).subscribe(
       res => {

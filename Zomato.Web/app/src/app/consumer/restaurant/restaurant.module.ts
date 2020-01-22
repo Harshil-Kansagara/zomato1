@@ -14,7 +14,7 @@ import { MenuComponent } from './menu/menu-restaurant.component';
 import { ReviewComponent, addCommentDialogComponent } from './review/review-restaurant.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { ItemCartComponent } from './item-cart/item-cart.component';
-import { CheckoutComponent, addUserAddressDialogComponent } from './checkout/checkout.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { AuthUserGuard } from '../../service/auth-user/auth-user.guard';
 import { AuthUserInterceptor } from '../../service/auth-user/auth-user.interceptor';
@@ -62,7 +62,7 @@ const routes: Routes = [
     ListRestaurantUserComponent,
     DetailRestaurantUserComponent,
     //addUserAddressDialogComponent,
-    addCommentDialogComponent,
+   // addCommentDialogComponent,
     MenuComponent,
     ReviewComponent,
     ItemCartComponent,
@@ -74,6 +74,6 @@ const routes: Routes = [
     useClass: AuthUserInterceptor,
     multi: true
   }],
-  entryComponents: [addCommentDialogComponent]//addUserAddressDialogComponent
+  //entryComponents: [addCommentDialogComponent]//addUserAddressDialogComponent
 })
 export class RestaurantUserModule {}

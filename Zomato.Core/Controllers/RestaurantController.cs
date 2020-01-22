@@ -58,7 +58,7 @@ namespace Zomato.Core.Controllers
 
                 var _restReviews = await _unitOfWork.ReviewRepository.GetReviewByRestaurantId(restaurant.RestaurantId);
 
-                if (_restReviews.Count != 0) {
+                if (_restReviews != null) {
                     foreach (var review in _restReviews)
                     {
                         totalRating += review.rating;

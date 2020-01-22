@@ -25,7 +25,7 @@ import { addCommentDialogComponent } from '../../../consumer/restaurant/review/r
 export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestroy {
 
   pageTitle = "Detail";
-  restaurantName; token; decode_token; userId: string;
+  restaurantName; searchText; token; decode_token; userId: string;
   restaurantDetail: any;
   menuList: any[];
   menu: Menu[];
@@ -96,11 +96,11 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     this.dataSource.paginator = this.paginator;
   }
 
-  private doFilter(value: string) {
+  doFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  private getRestaurantDetail() {
+  getRestaurantDetail() {
     this.restaurantDetail = this.restaurantService.getRestaurantDetail(this.restaurantName).subscribe(
       res => {
         if (res != null) {
@@ -112,7 +112,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     );
   }
 
-  private getMenuList(): void {
+  getMenuList(): void {
     this.menuSubscription = this.menuService.getMenuList(this.restaurantName).subscribe(
       res => {
         if (res != null) {
@@ -145,7 +145,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
   //  );
   //}
 
-  private getOrderList() {
+  getOrderList() {
     this.orderSubscription = this.orderService.getOrderByRestaurant(this.restaurantName).subscribe(
       res => {
         this.orderList = res as OrderDetail[];
@@ -156,7 +156,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     );
   }
 
-  private openDetailDialog(id: number): void {
+  openDetailDialog(id: number): void {
     const dialogRef = this.dialog.open(OrderDetailDialogComponent, {
       width: '550px',
       data: {
@@ -166,7 +166,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     });
   }
 
-  private checkUserStatus() {
+  checkUserStatus() {
     this.token = localStorage.getItem('token');
     if (this.token != null) {
       this.decode_token = jwt_decode(this.token)
@@ -179,7 +179,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     }
   }
 
-  private getReviewList(): void {
+  getReviewList(): void {
     this.reviewSubscription = this.reviewService.getReviewList(this.restaurantName).subscribe(
       res => {
         if (res != null) {
@@ -195,7 +195,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     );
   }
 
-  private deleteReview(reviewId: number) {
+  deleteReview(reviewId: number) {
     this.reviewSubscription = this.reviewService.deleteReview(reviewId).subscribe(
       res => {
         this.getReviewList();
@@ -206,7 +206,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     );
   }
 
-  private addLike(reviewId: number): void {
+  addLike(reviewId: number): void {
     console.log("Review Id: "+reviewId);
     if (this.toggle) {
       if (this.checkUserStatus()) {
@@ -241,7 +241,7 @@ export class DetailRestaurantComponent implements OnInit, AfterViewInit, OnDestr
     this.toggle = !this.toggle;
   }
 
-  private openAddCommentDialog(reviewId: number): void {
+  openAddCommentDialog(reviewId: number): void {
     const dialogRef = this.dialog.open(addCommentDialogComponent, {
       width: '250px'
     });

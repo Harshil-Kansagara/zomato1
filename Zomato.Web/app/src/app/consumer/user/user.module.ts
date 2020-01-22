@@ -38,9 +38,9 @@ const routes: Routes = [
     UserOrderComponent,
     UserReviewComponent,
     UserFollowerComponent,
-    OrderDetailDialogComponent
+   // OrderDetailDialogComponent
   ],
-  entryComponents: [OrderDetailDialogComponent]
+ // entryComponents: [OrderDetailDialogComponent]
 })
 
 export class UserModule { }

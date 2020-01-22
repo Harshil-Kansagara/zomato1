@@ -7,17 +7,101 @@
     <StartupObject>Zomato.Web.Program</StartupObject>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <!-- Makes the TypeScript compilation task a no-op -->
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="App\**" />
+    <Content Remove="App\**" />
+    <EmbeddedResource Remove="App\**" />
+    <None Remove="App\**" />
+    <TypeScriptCompile Remove="App\**" />
+  </ItemGroup>
 
-  
+  <ItemGroup>
+    <Content Include="app\angular.json" />
+    <Content Include="app\e2e\tsconfig.json" />
+    <Content Include="app\package-lock.json" />
+    <Content Include="app\package.json" />
+    <Content Include="app\src\app\admin\account\login\login.component.html" />
+    <Content Include="app\src\app\admin\account\register\register.component.html" />
+    <Content Include="app\src\app\admin\admin.component.html" />
+    <Content Include="app\src\app\admin\order-detail-admin.component.html" />
+    <Content Include="app\src\app\admin\restaurant\add-menu\add-menu.component.html" />
+    <Content Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant-info.component.html" />
+    <Content Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant-search.component.html" />
+    <Content Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant.component.css" />
+    <Content Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant.component.html" />
+    <Content Include="app\src\app\admin\restaurant\detail\addMenu-dialog.component.html" />
+    <Content Include="app\src\app\admin\restaurant\detail\detail-restaurant.component.css" />
+    <Content Include="app\src\app\admin\restaurant\detail\detail-restaurant.component.html" />
+    <Content Include="app\src\app\admin\restaurant\list\list-restaurant.component.css" />
+    <Content Include="app\src\app\admin\restaurant\list\list-restaurant.component.html" />
+    <Content Include="app\src\app\app.component.css" />
+    <Content Include="app\src\app\app.component.html" />
+    <Content Include="app\src\app\consumer\home\home.component.css" />
+    <Content Include="app\src\app\consumer\home\home.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\checkout\checkout.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\checkout\checkout.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\checkout\dialog-add-location.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\detail\detail-restaurant-user.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\detail\detail-restaurant-user.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\item-cart\item-cart.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\item-cart\item-cart.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\list\list-restaurant-user.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\list\list-restaurant-user.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\menu\menu-restaurant.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\menu\menu-restaurant.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\order-confirm\order-confirm.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\order-confirm\order-confirm.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\restaurant.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\restaurant.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\review\dialog-add-comment.component.html" />
+    <Content Include="app\src\app\consumer\restaurant\review\review-restaurant.component.css" />
+    <Content Include="app\src\app\consumer\restaurant\review\review-restaurant.component.html" />
+    <Content Include="app\src\app\consumer\user\address\user-address.component.css" />
+    <Content Include="app\src\app\consumer\user\address\user-address.component.html" />
+    <Content Include="app\src\app\consumer\user\follower\user-follower.component.css" />
+    <Content Include="app\src\app\consumer\user\follower\user-follower.component.html" />
+    <Content Include="app\src\app\consumer\user\order\order-detail-dialog.component.html" />
+    <Content Include="app\src\app\consumer\user\order\user-order.component.css" />
+    <Content Include="app\src\app\consumer\user\order\user-order.component.html" />
+    <Content Include="app\src\app\consumer\user\review\user-review.component.css" />
+    <Content Include="app\src\app\consumer\user\review\user-review.component.html" />
+    <Content Include="app\src\app\consumer\user\user.component.css" />
+    <Content Include="app\src\app\consumer\user\user.component.html" />
+    <Content Include="app\src\assets\bg.png" />
+    <Content Include="app\src\assets\breakfast.png" />
+    <Content Include="app\src\assets\cafes.png" />
+    <Content Include="app\src\assets\cupcake.jpg" />
+    <Content Include="app\src\assets\dessert.png" />
+    <Content Include="app\src\assets\dinner.png" />
+    <Content Include="app\src\assets\logo.png" />
+    <Content Include="app\src\assets\lunch.png" />
+    <Content Include="app\src\favicon.ico" />
+    <Content Include="app\src\index.html" />
+    <Content Include="app\src\styles.css" />
+    <Content Include="app\tsconfig.app.json" />
+    <Content Include="app\tsconfig.json" />
+    <Content Include="app\tsconfig.spec.json" />
+    <Content Include="app\tslint.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="app\.editorconfig" />
+    <None Include="app\.gitignore" />
+    <None Include="app\browserslist" />
+    <None Include="app\e2e\protractor.conf.js" />
+    <None Include="app\karma.conf.js" />
+    <None Include="app\README.md" />
+    <None Include="app\src\assets\.gitkeep" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 
@@ -25,6 +109,88 @@
     <ProjectReference Include="..\Zomato.Core\Zomato.Core.csproj" />
     <ProjectReference Include="..\Zomato.DomainModel\Zomato.DomainModel.csproj" />
     <ProjectReference Include="..\Zomato.repository\Zomato.Repository.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <TypeScriptCompile Include="app\e2e\src\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="app\e2e\src\app.po.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\account\login\login.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\account\register\register.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\admin.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\restaurant\add-menu\add-menu.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant-info.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant-search.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\restaurant\add-restaurant\add-restaurant.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\restaurant\detail\detail-restaurant.component.ts" />
+    <TypeScriptCompile Include="app\src\app\admin\restaurant\list\list-restaurant.component.ts" />
+    <TypeScriptCompile Include="app\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="app\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="app\src\app\app.component.ts" />
+    <TypeScriptCompile Include="app\src\app\app.module.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\consumer.module.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\home\home.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\checkout\checkout.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\detail\detail-restaurant-user.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\item-cart\item-cart.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\list\list-restaurant-user.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\menu\menu-restaurant.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\order-confirm\order-confirm.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\restaurant.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\restaurant.module.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\restaurant\review\review-restaurant.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\user\address\user-address.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\user\follower\user-follower.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\user\order\user-order.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\user\review\user-review.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\user\user.component.ts" />
+    <TypeScriptCompile Include="app\src\app\consumer\user\user.module.ts" />
+    <TypeScriptCompile Include="app\src\app\service\auth-user\auth-user.guard.ts" />
+    <TypeScriptCompile Include="app\src\app\service\auth-user\auth-user.interceptor.ts" />
+    <TypeScriptCompile Include="app\src\app\service\auth-admin\auth-admin.guard.ts" />
+    <TypeScriptCompile Include="app\src\app\service\auth-admin\auth-admin.interceptor.ts" />
+    <TypeScriptCompile Include="app\src\app\model\cart-item.ts" />
+    <TypeScriptCompile Include="app\src\app\model\follow.ts" />
+    <TypeScriptCompile Include="app\src\app\model\ICartItemWithItems.ts" />
+    <TypeScriptCompile Include="app\src\app\model\category.ts" />
+    <TypeScriptCompile Include="app\src\app\model\comment.ts" />
+    <TypeScriptCompile Include="app\src\app\model\cuisine.ts" />
+    <TypeScriptCompile Include="app\src\app\model\like.ts" />
+    <TypeScriptCompile Include="app\src\app\model\login.ts" />
+    <TypeScriptCompile Include="app\src\app\model\menu.ts" />
+    <TypeScriptCompile Include="app\src\app\model\order-detail.ts" />
+    <TypeScriptCompile Include="app\src\app\model\order-item-detail.ts" />
+    <TypeScriptCompile Include="app\src\app\model\order.ts" />
+    <TypeScriptCompile Include="app\src\app\model\register.ts" />
+    <TypeScriptCompile Include="app\src\app\model\restaurant.ts" />
+    <TypeScriptCompile Include="app\src\app\model\review.ts" />
+    <TypeScriptCompile Include="app\src\app\model\shopping-cart.ts" />
+    <TypeScriptCompile Include="app\src\app\model\userAddress.ts" />
+    <TypeScriptCompile Include="app\src\app\page-not-found.component.ts" />
+    <TypeScriptCompile Include="app\src\app\service\account.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\cart.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\category.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\comment.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\cuisine.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\debug.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\follow.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\like.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\menu.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\order-notification.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\order.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\rest-category.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\rest-cuisines.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\restaurant-resolver.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\restaurant.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\review.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\storage.service.ts" />
+    <TypeScriptCompile Include="app\src\app\service\user-address.service.ts" />
+    <TypeScriptCompile Include="app\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="app\src\environments\environment.ts" />
+    <TypeScriptCompile Include="app\src\main.ts" />
+    <TypeScriptCompile Include="app\src\polyfills.ts" />
+    <TypeScriptCompile Include="app\src\test.ts" />
   </ItemGroup>
 
 </Project>
