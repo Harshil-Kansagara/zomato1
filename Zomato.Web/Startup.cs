@@ -55,6 +55,7 @@ namespace Zomato.Web
 
             services.Configure<ApplicationSettingModel>(Configuration.GetSection("ApplicationSettings"));
 
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -81,9 +82,9 @@ namespace Zomato.Web
             services.AddScoped<IOrderNotificationRepository, OrderNotificationRepository>();
             services.AddScoped<IDataRepository, DataRepository>();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("ZomatoDb"), 
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString("ZomatoDb"),
                     b => b.MigrationsAssembly("Zomato.DomainModel")));
 
             //services.AddIdentityCore<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -99,10 +100,6 @@ namespace Zomato.Web
                 .AllowCredentials()
                 .WithOrigins("http://localhost:59227");
             }));
-
-            //var idProvider = new CustomUserIdProvider();
-
-            //GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => idProvider);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -146,18 +143,19 @@ namespace Zomato.Web
             });
 
             services.AddSignalR();
-           //services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 //app.UseDatabaseErrorPage();
             }
+
+            context.Database.Migrate();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -181,6 +179,8 @@ namespace Zomato.Web
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Zomato.DomainModel.Migrations
 {
-    public partial class initial : Migration
+    public partial class abc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,6 +74,20 @@ namespace Zomato.DomainModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NotificationHub",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true),
+                    ConnectionId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotificationHub", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderedItem",
                 columns: table => new
                 {
@@ -86,6 +100,19 @@ namespace Zomato.DomainModel.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderedItem", x => x.OrderItemId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderNotificationData",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OrderId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderNotificationData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,14 +241,14 @@ namespace Zomato.DomainModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: true),
-                    FollowerId = table.Column<string>(nullable: true)
+                    FollowingId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Follow", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Follow_AspNetUsers_FollowerId",
-                        column: x => x.FollowerId,
+                        name: "FK_Follow_AspNetUsers_FollowingId",
+                        column: x => x.FollowingId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -389,8 +416,7 @@ namespace Zomato.DomainModel.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RestaurantId = table.Column<int>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    UserAddressId = table.Column<int>(nullable: false),
-                    AddressId = table.Column<int>(nullable: true),
+                    AddressId = table.Column<int>(nullable: false),
                     OrderDate = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -401,7 +427,7 @@ namespace Zomato.DomainModel.Migrations
                         column: x => x.AddressId,
                         principalTable: "UserAddress",
                         principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Order_Restaurant_RestaurantId",
                         column: x => x.RestaurantId,
@@ -469,6 +495,33 @@ namespace Zomato.DomainModel.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Breakfast" },
+                    { 2, "Lunch" },
+                    { 3, "Dinner" },
+                    { 4, "Cafe" },
+                    { 5, "Dessert" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cuisine",
+                columns: new[] { "CuisineId", "CuisineName" },
+                values: new object[,]
+                {
+                    { 1, "Chinese" },
+                    { 2, "Punjabi" },
+                    { 3, "South Indian" },
+                    { 4, "Gujarati" },
+                    { 5, "Fast Food" },
+                    { 6, "Pizza" },
+                    { 7, "Juices" },
+                    { 8, "Ice Cream" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -519,9 +572,9 @@ namespace Zomato.DomainModel.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Follow_FollowerId",
+                name: "IX_Follow_FollowingId",
                 table: "Follow",
-                column: "FollowerId");
+                column: "FollowingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Follow_UserId",
@@ -634,10 +687,16 @@ namespace Zomato.DomainModel.Migrations
                 name: "Menu");
 
             migrationBuilder.DropTable(
+                name: "NotificationHub");
+
+            migrationBuilder.DropTable(
                 name: "Order");
 
             migrationBuilder.DropTable(
                 name: "OrderedItem");
+
+            migrationBuilder.DropTable(
+                name: "OrderNotificationData");
 
             migrationBuilder.DropTable(
                 name: "RestaurantLocation");

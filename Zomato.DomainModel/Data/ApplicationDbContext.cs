@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,5 +32,33 @@ namespace Zomato.DomainModel.Data
         public DbSet<UserAddress> UserAddress { get; set; }
         public DbSet<NotificationHub> NotificationHub { get; set; }
         public DbSet<OrderNotificationData> OrderNotificationData { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Cuisine>().HasData(
+                new Cuisine() { CuisineId=1, CuisineName = "Chinese" },
+                new Cuisine() { CuisineId = 2, CuisineName = "Punjabi" },
+                new Cuisine() { CuisineId = 3, CuisineName = "South Indian" },
+                new Cuisine() { CuisineId = 4, CuisineName = "Gujarati" },
+                new Cuisine() { CuisineId = 5, CuisineName = "Fast Food" },
+                new Cuisine() { CuisineId = 6, CuisineName = "Pizza" },
+                new Cuisine() { CuisineId = 7, CuisineName = "Juices" },
+                new Cuisine() { CuisineId = 8, CuisineName = "Ice Cream" }
+                );
+
+            builder.Entity<Category>().HasData(
+                new Category() { CategoryId = 1, CategoryName = "Breakfast" },
+                new Category() { CategoryId = 2, CategoryName = "Lunch" },
+                new Category() { CategoryId = 3, CategoryName = "Dinner" },
+                new Category() { CategoryId = 4, CategoryName = "Cafe" },
+                new Category() { CategoryId = 5, CategoryName = "Dessert" }
+                );
+
+            builder.Entity<IdentityRole>().HasData(
+                new IdentityRole() { Name=  "admin" },
+                new IdentityRole() { Name="user" }
+                );
+        }
     }
 }

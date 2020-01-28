@@ -10,8 +10,8 @@ using Zomato.DomainModel.Data;
 namespace Zomato.DomainModel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191220051744_AddOrderNotificationData")]
-    partial class AddOrderNotificationData
+    [Migration("20200128103317_abc")]
+    partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -193,6 +193,33 @@ namespace Zomato.DomainModel.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Breakfast"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Lunch"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Dinner"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Cafe"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Dessert"
+                        });
                 });
 
             modelBuilder.Entity("Zomato.DomainModel.Models.Comment", b =>
@@ -227,6 +254,48 @@ namespace Zomato.DomainModel.Migrations
                     b.HasKey("CuisineId");
 
                     b.ToTable("Cuisine");
+
+                    b.HasData(
+                        new
+                        {
+                            CuisineId = 1,
+                            CuisineName = "Chinese"
+                        },
+                        new
+                        {
+                            CuisineId = 2,
+                            CuisineName = "Punjabi"
+                        },
+                        new
+                        {
+                            CuisineId = 3,
+                            CuisineName = "South Indian"
+                        },
+                        new
+                        {
+                            CuisineId = 4,
+                            CuisineName = "Gujarati"
+                        },
+                        new
+                        {
+                            CuisineId = 5,
+                            CuisineName = "Fast Food"
+                        },
+                        new
+                        {
+                            CuisineId = 6,
+                            CuisineName = "Pizza"
+                        },
+                        new
+                        {
+                            CuisineId = 7,
+                            CuisineName = "Juices"
+                        },
+                        new
+                        {
+                            CuisineId = 8,
+                            CuisineName = "Ice Cream"
+                        });
                 });
 
             modelBuilder.Entity("Zomato.DomainModel.Models.Follow", b =>
