@@ -496,6 +496,15 @@ namespace Zomato.DomainModel.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "475f819d-e851-4f9e-92b5-b57829710bbe", "0fcc5880-643d-4c85-ab1c-01a4888902b1", "admin", "ADMIN" },
+                    { "52e4629d-d7a3-4ae3-a404-cc50d0c86792", "08ac0351-819c-45e6-a83d-76ec48db3c7c", "user", "USER" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Category",
                 columns: new[] { "CategoryId", "CategoryName" },
                 values: new object[,]

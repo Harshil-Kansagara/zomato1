@@ -56,8 +56,8 @@ namespace Zomato.DomainModel.Data
                 );
 
             builder.Entity<IdentityRole>().HasData(
-                new IdentityRole() { Name=  "admin" },
-                new IdentityRole() { Name="user" }
+                new IdentityRole() { Name=  "admin", NormalizedName="ADMIN" },
+                new IdentityRole() { Name="user", NormalizedName="USER" }
                 );
         }
     }

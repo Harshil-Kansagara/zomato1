@@ -10,7 +10,7 @@ using Zomato.DomainModel.Data;
 namespace Zomato.DomainModel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200128103317_abc")]
+    [Migration("20200129040922_abc")]
     partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,22 @@ namespace Zomato.DomainModel.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "475f819d-e851-4f9e-92b5-b57829710bbe",
+                            ConcurrencyStamp = "0fcc5880-643d-4c85-ab1c-01a4888902b1",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "52e4629d-d7a3-4ae3-a404-cc50d0c86792",
+                            ConcurrencyStamp = "08ac0351-819c-45e6-a83d-76ec48db3c7c",
+                            Name = "user",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
