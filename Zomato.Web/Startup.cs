@@ -84,7 +84,7 @@ namespace Zomato.Web
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(
-                    Configuration.GetConnectionString("ZomatoDb"),
+                    Configuration.GetConnectionString("zomatodb"),
                     b => b.MigrationsAssembly("Zomato.DomainModel")));
 
             //services.AddIdentityCore<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
