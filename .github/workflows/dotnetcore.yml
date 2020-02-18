@@ -29,4 +29,10 @@ jobs:
       run: dotnet tool install -g Amazon.ElasticBeanstalk.Tools
     - name: Publish with dotnet to AWS ElasticBeanstalk
       working-directory: Zomato.Web
-      run: dotnet-eb deploy-environment --region:us-west-1
+      run: dotnet-eb deploy-environment
+      env:
+        aws_access_key: ${{secrets.aws_access_key}}
+        aws_secret_key: ${{secrets.aws_secret_key}}
+        application_name: zomato
+        environment_name: zomato
+        region: us-west-1
