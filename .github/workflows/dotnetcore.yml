@@ -28,7 +28,7 @@ jobs:
     - name: Publish with dotnet
       run: dotnet publish -c Release -o zomatopublish
     - name: Beanstalk Deploy for app
-      uses: einaregilsson/beanstalk-deploy@v3
+      uses: einaregilsson/beanstalk-deploy@v5
       with:
         aws_access_key: ${{secrets.aws_access_key}}
         aws_secret_key: ${{secrets.aws_secret_key}}
