@@ -25,3 +25,5 @@ jobs:
       run: npm run build-prod --output-hashing=none
     - name: Build with dotnet
       run: dotnet build
+    - name: Publish with dotnet
+      run: dotnet publish 
