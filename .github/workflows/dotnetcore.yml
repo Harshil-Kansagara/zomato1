@@ -28,4 +28,5 @@ jobs:
     - name: Install elastic beanstalk with dotnet
       run: dotnet tool install -g Amazon.ElasticBeanstalk.Tools
     - name: Publish with dotnet to AWS ElasticBeanstalk
-      run: dotnet-eb deploy-environment
+      working-directory: Zomato.Web
+      run: dotnet-eb deploy-environment --region:us-west-1
