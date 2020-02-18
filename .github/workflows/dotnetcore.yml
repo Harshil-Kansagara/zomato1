@@ -25,15 +25,7 @@ jobs:
       run: npm run build-prod --output-hashing=none
     - name: Build with dotnet
       run: dotnet build
-    - name: Publish with dotnet
-      run: dotnet publish -c Release -o zomatopublish
-    - name: Beanstalk Deploy for app
-      uses: einaregilsson/beanstalk-deploy@v5
-      with:
-        aws_access_key: ${{secrets.aws_access_key}}
-        aws_secret_key: ${{secrets.aws_secret_key}}
-        application_name: zomato
-        environment_name: zomato1
-        region: us-west-1
-        version_label: "my-app-${{ steps.format-time.outputs.replaced }}"
-        deployment_package: ./zomatopublish
+    - name: Install elastic beanstalk with dotnet
+      run: dotnet tool install -g Amazon.ElasticBeanstalk.Tools
+    - name: Publish with dotnet to AWS ElasticBeanstalk
+      run: dotnet-eb deploy-environment
