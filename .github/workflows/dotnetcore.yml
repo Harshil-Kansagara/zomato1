@@ -33,6 +33,3 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{secrets.aws_access_key}}
         AWS_SECRET_KEY: ${{secrets.aws_secret_key}}
-        APPLICATION_NAME: zomato
-        ENVIRONMENT_NAME: zomato
-        REGION: us-west-1
