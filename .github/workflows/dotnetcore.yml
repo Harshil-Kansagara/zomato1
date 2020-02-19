@@ -22,7 +22,7 @@ jobs:
       run: npm ci
     - name: Build with angular
       working-directory: Zomato.Web/app
-      run: npm run build-prod --output-hashing=none
+      run: npm run build-prod
     - name: Build with dotnet
       run: dotnet build
     - name: Install elastic beanstalk with dotnet
