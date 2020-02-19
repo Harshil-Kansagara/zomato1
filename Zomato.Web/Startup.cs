@@ -37,6 +37,8 @@ using Zomato.DomainModel.Models;
 using Zomato.Repository.NotificationRepository;
 using Zomato.Core.Hubs;
 using Zomato.Repository.DataRepository;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Zomato.Web
 {
@@ -84,7 +86,7 @@ namespace Zomato.Web
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(
-                    Configuration.GetConnectionString("zomatodb"),
+                    Configuration.GetConnectionString("zomato"),
                     b => b.MigrationsAssembly("Zomato.DomainModel")));
 
             //services.AddIdentityCore<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -98,7 +100,8 @@ namespace Zomato.Web
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()
-                .WithOrigins("http://localhost:59227");
+                //.WithOrigins("http://localhost:59227/OrderHub");
+                .WithOrigins("https://zomato.us-west-1.elasticbeanstalk.com/");
             }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -154,13 +157,17 @@ namespace Zomato.Web
                 app.UseDeveloperExceptionPage();
                 //app.UseDatabaseErrorPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             context.Database.Migrate();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+           
             app.UseAuthentication();
 
             app.UseCors("CorsPolicy");
@@ -170,17 +177,27 @@ namespace Zomato.Web
                 routes.MapHub<OrderHub>("/OrderHub");
             });
 
-            app.UseMvc();
-            app.UseSpa(spa =>
+            //app.UseMvc();
+            app.UseMvc(routes =>
             {
-                spa.Options.SourcePath = "app";
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "app";
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseAngularCliServer(npmScript: "start");
+            //    }
+            //});
+
+
         }
     }
 }

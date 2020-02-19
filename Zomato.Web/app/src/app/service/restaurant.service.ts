@@ -26,7 +26,7 @@ export class RestaurantService {
   }
 
   getRestaurantDetail(restaurantName: string) {
-    return this.http.get(this.baseUrl+ restaurantName);
+    return this.http.get(this.baseUrl + restaurantName);
   }
 
   getListRestaurantDetail() {
@@ -38,11 +38,11 @@ export class RestaurantService {
   }
 
   addRestaurant(restaurant: Restaurant) {
-    return this.http.post('api/Restaurant/restaurant', restaurant);
+    return this.http.post(this.baseUrl+'restaurant', restaurant);
   }
 
   deleteRestaurant(restaurantId: number) {
-    return this.http.delete('api/Restaurant/' + restaurantId);
+    return this.http.delete(this.baseUrl + restaurantId);
   }
 
   initializeRestaurant(): Restaurant {

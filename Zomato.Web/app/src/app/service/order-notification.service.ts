@@ -12,6 +12,7 @@ export class OrderNotificationService {
   connectionEstablished = new EventEmitter<Boolean>();
   private connectionIsEstablished = false;
   private _hubConnection: HubConnection;
+  private _hubConnectionStartPromise: Promise<void>;
 
   constructor() {
     this.getUserId();
@@ -21,22 +22,29 @@ export class OrderNotificationService {
   }
 
   sendAdminOnlineNotification(a: boolean) {
-    this._hubConnection.invoke('AdminNotification', a);
+    this._hubConnectionStartPromise.then(() => {
+      this._hubConnection.invoke('AdminNotification', a);
+    });
   }
 
-  sendDeliveryNotification(orderId:number) {
-    this._hubConnection.invoke('DeliveryOrder', orderId);
+  sendDeliveryNotification(orderId: number) {
+    this._hubConnectionStartPromise.then(() => {
+      this._hubConnection.invoke('DeliveryOrder', orderId);
+    });
   }
 
   public createConnection() {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl("http://localhost:59227/OrderHub", { accessTokenFactory: () => this.token})
+      //.withUrl("http://localhost:59227/OrderHub", { accessTokenFactory: () => this.token })
+      .withUrl("https://zomato.us-west-1.elasticbeanstalk.com/OrderHub", { accessTokenFactory: () => this.token })
       .build();
   }
 
   private startConnection(): void {
-    this._hubConnection
-      .start()
+    this._hubConnectionStartPromise = this._hubConnection
+      .start();
+    if (this._hubConnectionStartPromise) {
+    this._hubConnectionStartPromise
       .then(() => {
         this.connectionIsEstablished = true;
         console.log('Hub connection started');
@@ -46,6 +54,7 @@ export class OrderNotificationService {
         console.log('Error while establishing connection, retrying...');
         setTimeout(function () { this.startConnection(); }, 5000);
       });
+    }
   }
 
   private registerOnServerEvents(): void {

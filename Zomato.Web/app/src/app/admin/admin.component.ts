@@ -31,8 +31,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private http: HttpClient, private orderService: OrderService,
               private orderNotificationService: OrderNotificationService, public dialog: MatDialog,
     private _ngZone: NgZone, private toastr: ToastrService) {
-    this.subscribeToEvents();
     this.orderNotificationService.sendAdminOnlineNotification(true);
+    this.subscribeToEvents();
   }
 
   ngOnInit(): void {

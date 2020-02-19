@@ -1,0 +1,65 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "Zomato.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Core": "5.2.3",
+          "Zomato.Repository": "1.0.0"
+        },
+        "runtime": {
+          "Zomato.Core.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.3": {
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {
+            "assemblyVersion": "5.2.3.0",
+            "fileVersion": "5.2.30128.0"
+          }
+        }
+      },
+      "Zomato.DomainModel/1.0.0": {
+        "runtime": {
+          "Zomato.DomainModel.dll": {}
+        }
+      },
+      "Zomato.Repository/1.0.0": {
+        "dependencies": {
+          "Zomato.DomainModel": "1.0.0"
+        },
+        "runtime": {
+          "Zomato.Repository.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Zomato.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o90QYlRV8VKR1S7+EcJw9w8WSyVFLl+IIzN8ILZ+n2t6rsc/KS8kBxRzA7wCFPRUHhebCfLqilBk39phvanx3g==",
+      "path": "microsoft.aspnet.webapi.core/5.2.3",
+      "hashPath": "microsoft.aspnet.webapi.core.5.2.3.nupkg.sha512"
+    },
+    "Zomato.DomainModel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zomato.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -53,7 +53,9 @@ namespace Zomato.Core.Controllers
                         var tokenOptions = new JwtSecurityToken
                         (
                             issuer: "http://localhost/59227",
+                            //issuer: "https://zomato.us-west-1.elasticbeanstalk.com",
                             audience: "http://localhost/59227",
+                            //audience: "https://zomato.us-west-1.elasticbeanstalk.com",
                             claims: claims,
                             expires: DateTime.Now.AddDays(1),
                             signingCredentials: signinCredentials

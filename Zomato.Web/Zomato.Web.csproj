@@ -5,6 +5,7 @@
     <UserSecretsId>aspnet-Zomato.Web-6A2BBE3D-82A4-486E-9E91-A3DBD3BCAAB2</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <StartupObject>Zomato.Web.Program</StartupObject>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -94,14 +95,21 @@
     <None Include="app\src\assets\.gitkeep" />
   </ItemGroup>
 
-
+  <!--<PropertyGroup>
+    --><!-- Makes the TypeScript compilation task a no-op --><!--
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>-->
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
 
@@ -191,6 +199,11 @@
     <TypeScriptCompile Include="app\src\main.ts" />
     <TypeScriptCompile Include="app\src\polyfills.ts" />
     <TypeScriptCompile Include="app\src\test.ts" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

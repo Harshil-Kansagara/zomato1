@@ -32,12 +32,14 @@ namespace Zomato.Core.Controllers
             if (ModelState.IsValid) {
                 if (newUserAddress.AddressId == 0) { 
                     var userAddressList = _unitOfWork.UserAddressRepository.GetAddressList(newUserAddress.UserId).Result;
+                    if (userAddressList != null) { 
                     foreach (var each in userAddressList)
                     {
                         if (each.Address == newUserAddress.Address && each.UserId == newUserAddress.UserId)
                         {
                             return BadRequest();
                         }
+                    }
                     }
                     await _unitOfWork.UserAddressRepository.AddAddress(newUserAddress);
                     _unitOfWork.commit();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,8 +28,9 @@ namespace Zomato.Core.Hubs
                 if(orderNotificationList.Count != 0) { 
                     foreach (var each in connectionList)
                     {
-                        if (each.UserId == "4aa56cd4-3ac4-4be0-af99-5933372d8a22")
-                        {
+                        if(each.UserRole == "admin") { 
+                        //if (each.UserId == "4aa56cd4-3ac4-4be0-af99-5933372d8a22")
+                        //{
                             foreach (var each1 in orderNotificationList)
                             {
                                 var restaurantName = await _unitOfWork.RestaurantRepository.GetRestaurantNameById(await _unitOfWork.OrderRepository.GetRestaurantIdByOrderId(each1.OrderId));
@@ -38,6 +40,7 @@ namespace Zomato.Core.Hubs
                                 await Clients.Client(each.ConnectionId).SendAsync("OrderReceived", orderNotification);
                             }
                         
+                        //}
                         }
                     }
                 }
@@ -66,6 +69,8 @@ namespace Zomato.Core.Hubs
                 NotificationHub notificationHub = new NotificationHub();
                 notificationHub.UserId = Context.User.Identity.Name;
                 notificationHub.ConnectionId = Context.ConnectionId;
+                IdentityUser identityUser = await _unitOfWork.UserRepository.GetUserDetail(Context.User.Identity.Name);
+                notificationHub.UserRole = await _unitOfWork.UserRepository.getUserRole(identityUser);
                 await _unitOfWork.OrderNotificationRepository.AddConnectionId(notificationHub);
                 _unitOfWork.commit();
             }
